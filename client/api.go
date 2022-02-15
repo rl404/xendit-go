@@ -6,6 +6,7 @@ import (
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/balance"
+	"github.com/xendit/xendit-go/bank"
 	"github.com/xendit/xendit-go/card"
 	"github.com/xendit/xendit-go/cardlesscredit"
 	"github.com/xendit/xendit-go/customer"
@@ -35,6 +36,7 @@ type API struct {
 	Disbursement     *disbursement.Client
 	QRCode           *qrcode.Client
 	Customer         *customer.Client
+	Bank             *bank.Client
 }
 
 func (a *API) init() {
@@ -50,6 +52,7 @@ func (a *API) init() {
 	a.Disbursement = &disbursement.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.QRCode = &qrcode.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.Customer = &customer.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Bank = &bank.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 }
 
 // New creates a new Xendit API client
